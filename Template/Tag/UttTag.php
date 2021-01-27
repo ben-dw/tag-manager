@@ -8,19 +8,46 @@
 namespace Piwik\Plugins\TagManager\Template\Tag;
 
 use Piwik\Settings\FieldConfig;
+use Piwik\Plugins\TagManager\Template\Tag\BaseTag;
 use Piwik\Validators\NotEmpty;
 
 class UttTag extends BaseTag
 {
+    public function getName()
+    {
+        // By default, the name will be automatically fetched from the TagManager_CustomHtmlTagName translation key.
+        // you can either adjust/create/remove this translation key, or return a different value here directly.
+        return 'UTT';
+    }
+
+    public function getDescription()
+    {
+        // By default, the description will be automatically fetched from the TagManager_CustomHtmlTagDescription
+        // translation key. you can either adjust/create/remove this translation key, or return a different value
+        // here directly.
+        return 'UTT TagManager Container provided by Performance Media';
+    }
+
+    public function getHelp()
+    {
+        // By default, the help will be automatically fetched from the TagManager_CustomHtmlTagHelp translation key.
+        // you can either adjust/create/remove this translation key, or return a different value here directly.
+        return parent::getHelp();
+    }
+
+    public function getCategory()
+    {
+        return self::CATEGORY_OTHERS;
+    }
+
     public function getIcon()
     {
-        return 'plugins/TagManager/images/defaultIcon.svg';
+        return 'plugins/TagManager/images/icons/code.svg';
     }
 
     public function getParameters()
     {
         return array(
-            $trackingType,
             $this->makeSetting('advertiser_id', '', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
                 $field->title = 'advertiser_id';
                 $field->description = 'advertiser_id';
@@ -154,11 +181,6 @@ class UttTag extends BaseTag
                 $field->title = 'pt_customvar10';
                 $field->description = 'insert value for defined customvar10';
             }),
-                     
         );
-    }
-    public function getCategory()
-    {
-            return self::CATEGORY_OTHERS;
     }
 }
