@@ -44,7 +44,7 @@
                 if (etrackerConfig.etrackerDNT) {
                     script.setAttribute('data-respect-dnt', 'true');
                 }
-                script.src = '//static.etracker.com/code/e.js';
+                script.src = '//code.etracker.com/code/e.js';
                 s.parentNode.insertBefore(script, s);
             }
         }
