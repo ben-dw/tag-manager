@@ -211,9 +211,9 @@
                             return actualValue < expectedValue;
                         case 'lower_than_or_equals':
                             return actualValue <= expectedValue;
-                        case 'larger_than':
+                        case 'greater_than':
                             return actualValue > expectedValue;
-                        case 'larger_than_or_equals':
+                        case 'greater_than_or_equals':
                             return actualValue >= expectedValue;
                         case 'contains':
                             return String(actualValue).indexOf(expectedValue) !== -1;
@@ -714,6 +714,11 @@
                     return Math.max(documentAlias.body.offsetWidth, documentAlias.body.scrollWidth, documentAlias.documentElement.offsetWidth, documentAlias.documentElement.clientWidth, documentAlias.documentElement.scrollWidth, 1);
                 },
                 addEventListener: function (element, eventType, eventHandler, useCapture) {
+                    if (!element) {
+                        Debug.log('element not found, cannot add event listener', element, this);
+
+                        return;
+                    }
                     if (element.addEventListener) {
                         useCapture = useCapture || false;
                         element.addEventListener(eventType, eventHandler, useCapture);
