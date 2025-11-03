@@ -44,6 +44,11 @@ class EtrackerConfigurationVariable extends BaseVariable
                 $field->description = 'The etracker ID you want to track data into. The ID is required. You may  find the ID of your website under "Administration => Setup/Tracking Code" in etracker.';
                 $field->validators[] = new NotEmpty();
             }),
+            $this->makeSetting('etrackerProxyDomain', false, FieldConfig::TYPE_STRING, function (FieldConfig $field) {
+                $field->title = 'etracker Tracking Domain';
+                $field->customUiControlTemplateFile = self::FIELD_TEMPLATE_VARIABLE;
+                $field->description = 'Only set this domain, if available (Enterprise) and already set up';
+            }),
             $this->makeSetting('etrackerDNT', false, FieldConfig::TYPE_BOOL, function (FieldConfig $field) {
                 $field->title = 'Respect Do Not Track in etracker';
             }),
